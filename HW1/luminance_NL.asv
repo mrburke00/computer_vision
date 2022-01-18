@@ -1,0 +1,4 @@
+function [outImg] = luminance_NL( current_img )
+    outImg = current_img
+    imwrite(current_img,'hw1_6.png');
+end

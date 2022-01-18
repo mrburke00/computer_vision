@@ -2,14 +2,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% your information
+% Devin Burke
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all;close all;clc;
 
 % Display a menu and get a choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
+    'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
 while choice ~= 1
@@ -17,16 +18,17 @@ while choice ~= 1
        case 0
            disp('Error - please choose one of the options.')
            % Display a menu and get a choice
-           choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
+    choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
+    'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
-           image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek');
+           image_choice = menu('Choose an image', 'sully', 'mandrill1');
            switch image_choice
                case 1
-                   filename = 'lena1.jpg';
-               case 4
-                   filename = 'yoda.bmp';
+                   filename = 'sully.bmp';
+               case 2
+                   filename = 'mandrill1.jpg';
                % fill in cases for all the images you plan to use
            end
            current_img = imread(filename);
@@ -59,11 +61,61 @@ while choice ~= 1
            
               
        case 5
-           %....
-           
+           %Brighten_L
+           % Ask user for brightness
+           current_img = imread("sully.bmp");
+           user_input=0; 
+           while user_input ~= 1
+            brightness = input('Enter brightness value [-255,255]');
+            if (user_input>=-255) && (user_input <= 255)
+                user_input=1;
+            end
+           end
+           makeBright_L(current_img, brightness);
+
+       case 6
+           %Brighten_NL
+           % Ask user for brightness
+           current_img = imread("sully.bmp");
+           %brightness=-75;
+           user_input=0; 
+           while user_input ~= 1
+            brightness = input('Enter brightness value [-255,255]');
+            if (user_input>=-255) && (user_input <= 255)
+                user_input=1;
+            end
+           end
+           makeBright_NL(current_img, brightness);
+
+       case 7
+           %Invert_L
+           current_img = imread("sully.bmp");
+           invert_L(current_img);
+
+       case 8
+           %Invert_NL
+           current_img = imread("sully.bmp");
+           invert_NL(current_img);
+
+       case 9
+           %Invert_NL
+           current_img = imread("sully.bmp");
+           addRandomNoise_NL(current_img);
+
+       case 10
+           %Luminance_NL
+           current_img = imread("sully.bmp");
+           luminance_NL(current_img);
        %....
    end
    % Display menu again and get user's choice
-   choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
+choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
+    'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
 end
+
+
+
+  
+
+
