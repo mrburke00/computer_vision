@@ -128,13 +128,19 @@ while choice ~= 1
            n = 3;
            m = 3;
            frosty(current_img, n, m);
+
+       case 14
+           %Scale Nearest
+           current_img = imread("sully.bmp");
+           factor = 2;
+           scaleNearest(current_img, factor);
        %....
    end
    % Display menu again and get user's choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask', ...
-    'Frosty Filter');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest');  % as you develop functions, add buttons for them here
 end
 
 
