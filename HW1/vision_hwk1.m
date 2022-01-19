@@ -47,8 +47,8 @@ while choice ~= 1
            
            % 2. Call the appropriate function
            current_img = imread("sully.bmp");
-           k_size = 3;
-           newImage = meanFilter(current_img, k_size); % create your own function for the mean filter
+           k_size = 0;
+           meanFilter(current_img, k_size); % create your own function for the mean filter
            
            % 3. Display the old and the new image using subplot
            % ....
