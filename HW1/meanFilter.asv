@@ -3,40 +3,36 @@
 function [outImg] = meanFilter(current_img, kernel_size)
     pad = floor(kernel_size/2); % amount of padding from kernel size 
     [x,y,z] = size(current_img);
-    outImg = current_img; % retain same coordinate mapping
-    for i = 1:x % row
-        for j = 1:y % coloumn 
-            %edge neighbor cases (i.e. (1,1) left, top neighbors dont exist)
-            left = i - pad; % neighbor to left
-            right = i + pad; % neighbor to right
-            top = j - pad; % neighbor above
-            bottom = j + pad; % neigbhor below
+    imwrite(outImg,'hw1_9.png');
+    for color = 1:z % color plane
+        for i = 1:x % row
+            for j = 1:y % coloumn 
+                %edge neighbor cases (i.e. (1,1) left, top neighbors dont exist)
+                left = i - pad; % neighbor to left
+                right = i + pad; % neighbor to right
+                top = j - pad; % neighbor above
+                bottom = j + pad; % neigbhor below
 
-            if left < 1 % no neighbor to left
-                left = 1;
-            end
-            if right > x % no neighbor to right
-                right = x; % reset right to max number of rows
-            end
-            if top < 1 % no neighbor above
-                top = 1; 
-            end
-            if bottom > y % no neighbor below
-                bottom = y; % reset bottom to max number of cols
-            end
+                if left < 1 % no neighbor to left
+                    left = 1;
+                end
+                if right > x % no neighbor to right
+                    right = x; % reset right to max number of rows
+                end
+                if top < 1 % no neighbor above
+                    top = 1; 
+                end
+                if bottom > y % no neighbor below
+                    bottom = y; % reset bottom to max number of cols
+                end
 
-            % extract neighbors within kernel space given calculated
-            % indexes for each color 
-            kernel_space = current_img(left:right, top:bottom, :);
-            % separate by color, take mean and assign to output image 
-            % nested mean because first mean gets average for each row
-            % second mean gets average of all averaged rows
-            outImg(i,j,1) = mean(mean(kernel_space(:,:,1)));
-            outImg(i,j,2) = mean(mean(kernel_space(:,:,2)));
-            outImg(i,j,3) = mean(mean(kernel_space(:,:,3)));
+                % extract neighbors within kernel space given calculated
+                % indexes
+                kernel_space = current_img(left:right, top:bottom, :)
+                %outImg(i,j,color) = mean(mean(neighbors(:,:,color)));
+            end
         end
     end
-    imwrite(outImg,'hw1_9.png');
 end
 
 % below is the padded implementation attempt - couldn't get operational
