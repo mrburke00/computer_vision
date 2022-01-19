@@ -10,7 +10,7 @@ clear all;close all;clc;
 % Display a menu and get a choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
-    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
 while choice ~= 1
@@ -20,7 +20,7 @@ while choice ~= 1
            % Display a menu and get a choice
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
-    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'sully', 'mandrill1');
@@ -46,6 +46,8 @@ while choice ~= 1
            % 1. Ask the user for size of kernel
            
            % 2. Call the appropriate function
+           current_img = imread("sully.bmp");
+           k_size = 3;
            newImage = meanFilter(current_img, k_size); % create your own function for the mean filter
            
            % 3. Display the old and the new image using subplot
@@ -106,12 +108,30 @@ while choice ~= 1
            %Luminance_NL
            current_img = imread("sully.bmp");
            luminance_NL(current_img);
+       
+       case 11
+           %Red Filter
+           current_img = imread("redBaloon.jpg");
+           redVal = 0.5;
+           redFilter(current_img, redVal);
+
+       case 12
+           %Binary Mask
+           current_img = imread("wrench1.jpg");
+           binaryMask(current_img);
+        
+       case 13
+           %Frosty Filter
+           current_img = imread("sully.bmp");
+           n = 3;
+           m = 3;
+           frosty(current_img, n, m);
        %....
    end
    % Display menu again and get user's choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
-    'Invert_NL', 'Add Random Noise', 'Luminance_NL');  % as you develop functions, add buttons for them here
+    'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask');  % as you develop functions, add buttons for them here
 end
 
 
