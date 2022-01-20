@@ -22,7 +22,7 @@ while choice ~= 1
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask',...
-    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear', 'Swirl Filter', 'Famous Me');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'sully', 'mandrill1', 'lena1_small', ...
@@ -153,13 +153,25 @@ while choice ~= 1
            current_img = imread("sully.bmp");
            factor = 0.5;
            scaleBilinear(current_img, factor);
+
+       case 16
+           %Swirl
+           current_img = imread("sully.bmp");
+           factor = 0.5;
+           scaleBilinear(current_img, factor);
+
+       case 17
+           %Famous Me
+           background_img = imread("sun.jpg");
+           foreground_img = imread("me.png");
+           famousMe(background_img, foreground_img);
        %....
    end
    % Display menu again and get user's choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask', ...
-    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear', 'Swirl Filter', 'Famous Me');  % as you develop functions, add buttons for them here
 end
 
 
