@@ -64,3 +64,7 @@ function [outImg] = scaleBilinear( current_img, factor)
     outImg = uint8(outImg);
     imwrite(outImg,'hw1_scaleBilinear_result.png');
 end
+
+% other resources
+% https://www.mathworks.com/matlabcentral/answers/297921-the-bilinear-interpolation-embedded-matlab-function-vs-bilinear-interpolation-re-written-or-coded
+% https://en.wikipedia.org/wiki/Bilinear_interpolation

@@ -1,3 +1,7 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
 
 % conditional implementation attempt
 function [outImg] = meanFilter(current_img, kernel_size)
