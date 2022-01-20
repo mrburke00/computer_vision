@@ -11,7 +11,7 @@ clear all;close all;clc;
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask', ...
-    'Frosty Filter', 'Scale Nearest');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
 while choice ~= 1
@@ -22,7 +22,7 @@ while choice ~= 1
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask',...
-    'Frosty Filter', 'Scale Nearest');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'sully', 'mandrill1');
@@ -134,13 +134,19 @@ while choice ~= 1
            current_img = imread("sully.bmp");
            factor = 0.5;
            scaleNearest(current_img, factor);
+       
+       case 15
+           %Scale Bilinear
+           current_img = imread("sully.bmp");
+           factor = 0.5;
+           scaleBilinear(current_img, factor);
        %....
    end
    % Display menu again and get user's choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter', 'Brighten_L', 'Brighten_NL', 'Invert_L', ...
     'Invert_NL', 'Add Random Noise', 'Luminance_NL', 'Red Filter', 'Binary Mask', ...
-    'Frosty Filter', 'Scale Nearest');  % as you develop functions, add buttons for them here
+    'Frosty Filter', 'Scale Nearest', 'Scale Bilinear');  % as you develop functions, add buttons for them here
 end
 
 
