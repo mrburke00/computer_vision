@@ -1,3 +1,8 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
+
 function [outImg] = scaleNearest( current_img, factor)
     [x,y,z] = size(current_img);
     scaledX = floor(x * factor); % new height and width based on factor input

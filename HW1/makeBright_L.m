@@ -1,17 +1,17 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
+
 function [ outImg ]= makeBright_L(current_img, brightness)
-    for i = 1:length(current_img)
-        for j = 1:size(current_img,2)
-            for k = 1:3
-                tmp = current_img(i,j,k);
-                %disp(tmp);
-                tmp = tmp + brightness;
-                current_img(i,j,k) = tmp;
-                %disp(current_img(i,j,k))
-                %break
+    for i = 1:length(current_img) % iterate through rows 
+        for j = 1:size(current_img,2) % iterate through columns
+            for k = 1:3 % iterate through colors 
+                tmp = current_img(i,j,k); % extract current pixel value
+                tmp = tmp + brightness; % add input brightness
+                outImg(i,j,k) = tmp; % assign pixel to new value 
             end
-            %break
         end
-        %break
     end
-    imwrite(current_img,'hw1_1_dark.png'); 
+    imwrite(outImg,'hw1_1_dark.png'); 
 end

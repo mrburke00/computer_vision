@@ -57,10 +57,10 @@ while choice ~= 1
            
            % 1. Ask the user for size of kernel
            user_input = 0;
-            while user_input ~= 1
+            while user_input ~= 1 % keep iterating until user input meets criteria
                 k_size = input('Enter kernel size (greater than 1)');
                 if (k_size>=1)
-                    user_input=1;
+                    user_input=1; 
                 end
             end
            % 2. Call the appropriate function
@@ -79,92 +79,257 @@ while choice ~= 1
             
        case 5
            %Brighten_L
+
            % Ask user for brightness
-           current_img = imread("sully.bmp");
+           current_img = imread(filename);
            user_input=0; 
            while user_input ~= 1
             brightness = input('Enter brightness value [-255,255]');
-            if (user_input>=-255) && (user_input <= 255)
+            if (brightness>=-255) && (brightness <= 255)
                 user_input=1;
             end
            end
-           makeBright_L(current_img, brightness);
+           new_img = makeBright_L(current_img, brightness);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 6
            %Brighten_NL
+
            % Ask user for brightness
-           current_img = imread("sully.bmp");
-           %brightness=-75;
+           current_img = imread(filename);
            user_input=0; 
            while user_input ~= 1
             brightness = input('Enter brightness value [-255,255]');
-            if (user_input>=-255) && (user_input <= 255)
+            if (brightness>=-255) && (brightness <= 255)
                 user_input=1;
             end
            end
-           makeBright_NL(current_img, brightness);
+           new_img = makeBright_NL(current_img, brightness);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 7
            %Invert_L
-           current_img = imread("sully.bmp");
-           invert_L(current_img);
+
+           current_img = imread(filename);
+           new_img = invert_L(current_img);
+           
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 8
            %Invert_NL
-           current_img = imread("sully.bmp");
-           invert_NL(current_img);
+
+           current_img = imread(filename);
+           new_img = invert_NL(current_img);
+           
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 9
-           %Invert_NL
-           current_img = imread("sully.bmp");
-           addRandomNoise_NL(current_img);
+           %addRandomNoise_NL
+
+           current_img = imread(filename);
+           new_img = addRandomNoise_NL(current_img);
+           
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 10
            %Luminance_NL
-           current_img = imread("sully.bmp");
-           luminance_NL(current_img);
+
+           current_img = imread(filename);
+           new_img = luminance_NL(current_img);
+           
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           colormap(gray)
+           title("Result");
+           axis image
        
        case 11
            %Red Filter
-           current_img = imread("redBaloon.jpg");
-           redVal = 0.5;
-           redFilter(current_img, redVal);
+           % Ask user for brightness
+           current_img = imread(filename);
+           user_input=0; 
+           while user_input ~= 1
+            red_val = input('Enter red filter value [0,1]');
+            if (red_val>=0) && (red_val <= 1)
+                user_input=1;
+            end
+           end
+           new_img = redFilter(current_img, red_val);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           colormap(gray)
+           title("Result");
+           axis image
 
        case 12
            %Binary Mask
-           current_img = imread("wrench1.jpg");
-           binaryMask(current_img);
+            
+           current_img = imread(filename);
+           new_img = binaryMask(current_img);
+           
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           colormap(gray)
+           title("Result");
+           axis image
+
         
        case 13
            %Frosty Filter
-           current_img = imread("sully.bmp");
-           n = 3;
-           m = 3;
-           frosty(current_img, n, m);
+
+           current_img = imread(filename);
+           user_input=0; 
+           while user_input ~= 1
+            n = input('Enter n > 0');
+            m = input('Enter m > 0');
+            if (n>0) && (m>0)
+                user_input=1;
+            end
+           end
+           new_img = frosty(current_img, n, m);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 14
            %Scale Nearest
-           current_img = imread("sully.bmp");
-           factor = 0.5;
-           scaleNearest(current_img, factor);
+           current_img = imread(filename);
+           user_input=0; 
+           while user_input ~= 1
+            factor = input('Enter factor > 0');
+            if (factor>0)
+                user_input=1;
+            end
+           end
+           new_img = scaleNearest(current_img, factor);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
        
        case 15
            %Scale Bilinear
-           current_img = imread("sully.bmp");
-           factor = 0.5;
-           scaleBilinear(current_img, factor);
+
+           current_img = imread(filename);
+           user_input=0; 
+           while user_input ~= 1
+            factor = input('Enter factor > 0');
+            if (factor>0)
+                user_input=1;
+            end
+           end
+           new_img = scaleBilinear(current_img, factor);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
 
        case 16
            %Swirl
-           current_img = imread("sully.bmp");
-           factor = 0.5;
-           scaleBilinear(current_img, factor);
+           factor = 0;
+           ox = 0;
+           oy = 0;
+           current_img = imread(filename);
+           factor = input('Enter factor : ');
+           ox = input('Enter ox : ');
+           oy = input('Enter oy : ');
+           new_img = swirlFilter(current_img, factor, ox, oy);
+
+           subplot(1, 2, 1);
+           imagesc(current_img);
+           title("Original");
+           axis image
+           subplot(1, 2, 2);
+           imagesc(new_img);
+           title("Result");
+           axis image
+
+
 
        case 17
            %Famous Me
            background_img = imread("sun.jpg");
            foreground_img = imread("me.png");
-           famousMe(background_img, foreground_img);
+           new_img = famousMe(background_img, foreground_img);
+           subplot(1, 3, 1);
+           imagesc(background_img);
+           title("Background");
+           axis image
+           subplot(1, 3, 2);
+           imagesc(foreground_img);
+           title("Foreground");
+           axis image
+           subplot(1, 3, 3);
+           imagesc(new_img);
+           title("Result");
+           axis image
+
        %....
    end
    % Display menu again and get user's choice

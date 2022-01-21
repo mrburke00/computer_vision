@@ -1,3 +1,8 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
+
 function [outImg] = scaleBilinear( current_img, factor)
     [rows,cols,z] = size(current_img);
     scaledX = floor(rows * factor); % new height and width based on factor input

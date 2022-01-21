@@ -1,3 +1,8 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
+
 function [outImg] = frosty (current_img, n, m)
     [x,y,z] = size(current_img);
     outImg = current_img; % retain same coordinate mapping

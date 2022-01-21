@@ -1,3 +1,8 @@
+% Names: Devin Burke, Ty Tomlin
+% Course #: CSCI 5722
+% Assignment #: 1
+% Instructor: Fleming
+
 function [outImg] = famousMe(background_img, foreground_img)
     upper_threshold = 150; %threshold for binary mask
     y = 65; % x and y positioning of foreground image
